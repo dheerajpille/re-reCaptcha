@@ -4,21 +4,20 @@
     "description": "Solving reCaptchas is your new hobby!",
     "manifest_version": 2,
     "permissions": [
-    	"background", 
-    	"webRequest"
+	"<all_urls>"
     ],
-
     "icons": { 
     	"16": "icons/icon16.png",
     	"48": "icons/icon48.png",
         "128": "icons/icon128.png" 
     },  
-
+    "web_accessible_resources": ["popup.html"],
+    "content_security_policy": "script-src 'self' https://www.google.com https://www.gstatic.com; object-src 'self'",
     "content_scripts": [
 	    {
-	    	"js": ["js/reCaptcha.js"],
+	    	"js": ["contentScript.js"],
 	      	"matches": ["<all_urls>"],
-	      	"run_at": "document_start"
+	      	"run_at": "document_end"
 	    }
   	]
 }
