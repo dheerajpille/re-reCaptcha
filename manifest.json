@@ -5,8 +5,7 @@
     "manifest_version": 2,
     "permissions": [
     	"background", 
-    	"webRequest", 
-    	"*://*"
+    	"webRequest"
     ],
 
     "icons": { 
@@ -15,10 +14,11 @@
         "128": "icons/icon128.png" 
     },  
 
-    "background": {
-	    "scripts": [
-	    	"js/background.js"
-	    ],
-	    "persistent": true
-  	}
+    "content_scripts": [
+	    {
+	    	"js": ["js/reCaptcha.js"],
+	      	"matches": ["<all_urls>"],
+	      	"run_at": "document_start"
+	    }
+  	]
 }
